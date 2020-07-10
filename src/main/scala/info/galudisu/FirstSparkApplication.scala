@@ -1,4 +1,4 @@
-package cn.galudisu
+package info.galudisu
 
 import org.apache.spark.sql.SparkSession
 

@@ -1,4 +1,4 @@
-name := """Spark Third Edition"""
+name := """spark-third-edition"""
 
 maintainer := "Galudisu <galudisu@gmail.com>"
 
@@ -28,6 +28,7 @@ scalacOptions := Seq(
   "-encoding",
   "utf8"
 )
+
 resolvers ++= Seq(
   "Local Maven Repository" at "file://" + Path.userHome.absolutePath + "/.m2/repository",
   Resolver.sonatypeRepo("releases"),
