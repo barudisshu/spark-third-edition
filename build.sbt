@@ -6,7 +6,8 @@ version := "0.1"
 
 scalaVersion := "2.12.8"
 
-lazy val sparkVersion = "3.0.0"
+lazy val sparkVersion = "2.4.5"
+lazy val postgresqlVersino = "42.1.4"
 
 // This work for jdk >= 8u131
 javacOptions in Universal := Seq(
@@ -46,5 +47,6 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql"       % sparkVersion,
   "org.apache.spark" %% "spark-streaming" % sparkVersion,
   "org.apache.spark" %% "spark-graphx"    % sparkVersion,
-  "org.apache.spark" %% "spark-mllib"     % sparkVersion
+  "org.apache.spark" %% "spark-mllib"     % sparkVersion，
+  "org.postgresql" %% "postgresql" % postgresqlVersion
 )
