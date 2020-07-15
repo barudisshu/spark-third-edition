@@ -8,8 +8,6 @@
         </Console>
     </Appenders>
     <Loggers>
-        <logger name="org.jooq.tools.LoggerListener" level="DEBUG"/>
-        <logger name="org.jooq" level="DEBUG"/>
         <logger name="info.galudisu" level="DEBUG"/>
         <Root level="INFO">
             <AppenderRef ref="STDOUT"/>
