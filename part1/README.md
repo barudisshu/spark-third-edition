@@ -54,41 +54,70 @@ Spark 的核心部分(mana, 魔力)
 
 机器学习、人工智能、等等。
 
+预测、
+
+生物科技、种子、病毒
+
+公安追踪、犯罪心理
+
+
+
 ## Dataframe
 
+dataframe 的概念是Spark的本质。下面会从Java层面和RDBMS层面对比介绍
+
+### Java perspective
+
+如果你熟悉JDBC，dataframe类似于`ResultSet`。它包含数据，拥有API接口...
+
+-  数据通过API访问
+- 可以访问Schema
+
+不同的是：
+
+- 不是通过`next()`方法访问的。
+- API可以通过用户自定义进行扩展(UDFs, user-defined functions)。UDFs会在后面章节学习到。
+- 访问数据先通过`Row`然后再到`Column`。
+- 元数据是最基本的结构，在Spark中不会有什么主键、外键、索引这些东西。
+
+### RDBMS perspective
+
+dataframe类比数据库而已，有下面相似的地方：
+
+- 数据由行和列表述
+- 列(Columns)的数据结构是强类型。(第二范式)
+
+不同的是：
+
+- 数据可以内嵌，可以作为JSON或XML文档。
+- 不能更新或删除行；仅可以创建新的dataframes
+- 可以简单地添加或删除列。
+- 没有约束(constraints)、没有索引、没有主键或外键、没有触发器、更不可能有其它的(存储过程、视图...)。
 
 
+## 如何运行
 
+>Spark可以不需要安装集群环境下进行开发测试，在windows环境下需要额外添加`HADOOP_HOME` 并制定PATH=$HADOOP_HOME/bin，以确保相应的运行以来。
 
+可以使用你喜欢的任何构建工具，例如maven、gradle、sbt等。由于Spark使用scala编写，这里使用SBT multi project构建项目工程。
 
+## Summary
 
+Spark是一个分析系统；以分布式的方式处理工作任务和算法问题。不仅仅用于分析。
 
+Spark支持SQL、Java、Scala、R、Python多种编程语言接口。
 
+Spark的主要存储数据是dataframe。dataframe组合了使用API存储的能力。
 
+类似于JDBC的`ResultSet`。
 
+dataframe的实现于`Dataset<Row>`。
 
+Spark的算法不局限于MapReduce。它的API允许大量的算法作用于数据。
 
+Spark Streaming经常被用于企业，商业中更多是实时数据分析(real-time analytics)。
 
+分析已经从简单的聚集进化了。企业希望通过计算获得用户的期望信息。Spark提供了机器学习和深度学习满足这种需求。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Graph是一种特殊的分析案例. Spark提供了对该分析的支持。
 
