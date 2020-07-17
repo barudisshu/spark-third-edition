@@ -4,7 +4,7 @@ maintainer := "Galudisu <galudisu@gmail.com>"
 
 version := "0.1"
 
-scalaVersion in ThisBuild := "2.12.8"
+scalaVersion in ThisBuild := "2.12.12"
 organization in ThisBuild := "info.galudisu"
 
 lazy val global = project.in(file(".")).settings(settings).aggregate(part1)
@@ -16,7 +16,7 @@ lazy val part1 = project
     settings,
     libraryDependencies ++= commonDependencies
   )
-  .aggregate(chap1)
+  .aggregate(chap1, chap2)
 
 lazy val chap1 = project
   .in(file("part1/chap1"))
@@ -27,13 +27,24 @@ lazy val chap1 = project
   )
   .enablePlugins(JavaAppPackaging)
 
+lazy val chap2 = project
+  .in(file("part1/chap2"))
+  .settings(
+    name := "chap2",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
 // DEPENDENCIES
 
 lazy val dependencies =
   new {
-    val log4jV        = "2.7"
+    val log4jV        = "2.13.3"
     val scalaLoggingV = "3.7.2"
     val slf4jV        = "1.7.25"
+
+    lazy val mysqlDriverV = "8.0.13"
 
     val sparkV = "3.0.0"
 
@@ -42,6 +53,8 @@ lazy val dependencies =
     val log4jImpl    = "org.apache.logging.log4j"   % "log4j-slf4j-impl" % log4jV
     val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging"   % scalaLoggingV
     val slf4j        = "org.slf4j"                  % "slf4j-api"        % slf4jV
+
+    val mysql = "mysql" % "mysql-connector-java" % mysqlDriverV
 
     val sparkCore      = "org.apache.spark" %% "spark-core"      % sparkV
     val sparkSql       = "org.apache.spark" %% "spark-sql"       % sparkV
@@ -57,6 +70,7 @@ lazy val commonDependencies = Seq(
   dependencies.log4jImpl,
   dependencies.scalaLogging,
   dependencies.slf4j,
+  dependencies.mysql,
   dependencies.sparkCore,
   dependencies.sparkSql,
   dependencies.sparkStreaming,
