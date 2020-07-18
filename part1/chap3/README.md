@@ -11,8 +11,14 @@ dataframe是Spark的核心所在。
 
 ## The essential role of the dataframe in Spark
 
+`dataframe` 既是一个数据结构又是个API。 `dataframe`的API被用在Spark SQL、Spark Streaming、MLlib和GraphX中。
+
+1. 组织架构
+
+`dataframe`包含三层结构：API、Implementation & Schema、Storage.如下
 
 
+2. 不可变的数据类型
 
 
 
