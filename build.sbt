@@ -16,7 +16,7 @@ lazy val part1 = project
     settings,
     libraryDependencies ++= commonDependencies
   )
-  .aggregate(chap1, chap2)
+  .aggregate(chap1, chap2, chap3, chap4)
 
 lazy val chap1 = project
   .in(file("part1/chap1"))
@@ -31,6 +31,24 @@ lazy val chap2 = project
   .in(file("part1/chap2"))
   .settings(
     name := "chap2",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap3 = project
+  .in(file("part1/chap3"))
+  .settings(
+    name := "chap3",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap4 = project
+  .in(file("part1/chap4"))
+  .settings(
+    name := "chap4",
     settings,
     libraryDependencies ++= commonDependencies
   )
