@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat
 
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
 
 /**
   * 在 dataset 和 dataframe 之间互转
@@ -41,4 +42,23 @@ object _05_CSVToDatasetBookToDataframeApp extends App with LazyLogging {
   logger.debug("*** Books are now in a dataset of books")
   bookDs.show(5, 17)
   bookDs.printSchema()
+
+  var df2 = bookDs.toDF()
+
+  df2 = df2.withColumn(
+    "releaseDateAsString",
+    concat(expr("releaseDate.year + 1900"),
+           lit("-"),
+           expr("releaseDate.month + 1"),
+           lit("-"),
+           df2.col("releaseDate.date"))
+  )
+
+  df2 = df2
+    .withColumn("releaseDateAsDate", to_date(df2.col("releaseDateAsString"), "yyyy-MM-dd"))
+    .drop("releaseDateAsString")
+
+  logger.debug("*** Books are back in a dataframe")
+  df2.show(5)
+  df2.printSchema()
 }
