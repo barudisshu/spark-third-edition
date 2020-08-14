@@ -1,23 +1,24 @@
 package info.galudisu
 
 import java.time.LocalDate
-import java.time.chrono.ChronoLocalDate
-import java.time.format.{DateTimeFormatter, DateTimeFormatterBuilder}
+import java.time.format.DateTimeFormatterBuilder
 import java.time.temporal.ChronoField
-import java.util.Locale
 
 import com.typesafe.scalalogging.LazyLogging
-import org.apache.spark.sql.{Dataset, Row, SparkSession}
+import org.apache.spark.sql._
 import org.apache.spark.sql.functions._
 
-import scala.util.{Failure, Success, Try}
+import scala.util._
 
-case class Book(id: Int, authorId: Int, link: String, title: String, releaseDate: LocalDate)
+trait _05_CSVToDatasetBookToDataframeApp {
+  case class Book(id: Int, authorId: Int, link: String, title: String, releaseDate: LocalDate)
+}
 
 /**
   * 在 dataset 和 dataframe 之间互转
   */
-object _05_CSVToDatasetBookToDataframeApp extends App with LazyLogging {
+object _05_CSVToDatasetBookToDataframeApp extends App with _05_CSVToDatasetBookToDataframeApp with LazyLogging {
+
   val spark = SparkSession
     .builder()
     .appName("CSV to dataframe to Dataset<Book> and back")
