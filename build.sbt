@@ -100,7 +100,8 @@ lazy val dependencies =
 
     lazy val mysqlDriverV = "8.0.13"
 
-    val sparkV = "3.0.0"
+    val sparkV    = "3.0.0"
+    val sparkXmlV = "0.9.0"
 
     val log4jCore    = "org.apache.logging.log4j"   % "log4j-core"       % log4jV
     val log4jApi     = "org.apache.logging.log4j"   % "log4j-api"        % log4jV
@@ -116,6 +117,9 @@ lazy val dependencies =
     val sparkGraphx    = "org.apache.spark" %% "spark-graphx"    % sparkV
     val sparkMllib     = "org.apache.spark" %% "spark-mllib"     % sparkV
 
+    val sparkAvro = "org.apache.spark" %% "spark-avro" % sparkV
+    val sparkXml = "com.databricks" %% "spark-xml" % sparkXmlV
+
   }
 
 lazy val commonDependencies = Seq(
@@ -129,7 +133,9 @@ lazy val commonDependencies = Seq(
   dependencies.sparkSql,
   dependencies.sparkStreaming,
   dependencies.sparkGraphx,
-  dependencies.sparkMllib
+  dependencies.sparkMllib,
+  dependencies.sparkAvro,
+  dependencies.sparkXml,
 ).map(_.exclude("org.slf4j", "slf4j-log4j12"))
 
 // SETTINGS
