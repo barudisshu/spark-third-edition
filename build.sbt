@@ -7,7 +7,7 @@ version := "0.1"
 scalaVersion in ThisBuild := "2.12.12"
 organization in ThisBuild := "info.galudisu"
 
-lazy val global = project.in(file(".")).settings(settings).aggregate(part1)
+lazy val global = project.in(file(".")).settings(settings).aggregate(part1, part2)
 
 lazy val part1 = project
   .in(file("part1"))
@@ -16,7 +16,16 @@ lazy val part1 = project
     settings,
     libraryDependencies ++= commonDependencies
   )
-  .aggregate(chap1, chap2, chap3, chap4)
+  .aggregate(chap1, chap2, chap3, chap4, chap5, chap6)
+
+lazy val part2 = project
+  .in(file("part2"))
+  .settings(
+    name := "part2",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .aggregate(chap7)
 
 lazy val chap1 = project
   .in(file("part1/chap1"))
@@ -49,6 +58,33 @@ lazy val chap4 = project
   .in(file("part1/chap4"))
   .settings(
     name := "chap4",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap5 = project
+  .in(file("part1/chap5"))
+  .settings(
+    name := "chap5",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap6 = project
+  .in(file("part1/chap6"))
+  .settings(
+    name := "chap6",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap7 = project
+  .in(file("part2/chap7"))
+  .settings(
+    name := "chap7",
     settings,
     libraryDependencies ++= commonDependencies
   )
