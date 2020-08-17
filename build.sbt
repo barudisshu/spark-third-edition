@@ -7,7 +7,7 @@ version := "0.1"
 scalaVersion in ThisBuild := "2.12.12"
 organization in ThisBuild := "info.galudisu"
 
-lazy val global = project.in(file(".")).settings(settings).aggregate(part1, part2)
+lazy val global = project.in(file(".")).settings(settings).aggregate(part1, part2, part3, part4)
 
 lazy val part1 = project
   .in(file("part1"))
@@ -25,7 +25,25 @@ lazy val part2 = project
     settings,
     libraryDependencies ++= commonDependencies
   )
-  .aggregate(chap7)
+  .aggregate(chap7, chap8, chap9, chap10)
+
+lazy val part3 = project
+  .in(file("part3"))
+  .settings(
+    name := "part3",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .aggregate(chap11, chap12, chap13, chap14, chap15)
+
+lazy val part4 = project
+  .in(file("part4"))
+  .settings(
+    name := "part4",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .aggregate(chap16, chap17, chap18)
 
 lazy val chap1 = project
   .in(file("part1/chap1"))
@@ -85,6 +103,105 @@ lazy val chap7 = project
   .in(file("part2/chap7"))
   .settings(
     name := "chap7",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap8 = project
+  .in(file("part2/chap8"))
+  .settings(
+    name := "chap8",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap9 = project
+  .in(file("part2/chap9"))
+  .settings(
+    name := "chap9",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap10 = project
+  .in(file("part2/chap10"))
+  .settings(
+    name := "chap10",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap11 = project
+  .in(file("part3/chap11"))
+  .settings(
+    name := "chap11",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap12 = project
+  .in(file("part3/chap12"))
+  .settings(
+    name := "chap12",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap13 = project
+  .in(file("part3/chap13"))
+  .settings(
+    name := "chap13",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap14 = project
+  .in(file("part3/chap14"))
+  .settings(
+    name := "chap14",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap15 = project
+  .in(file("part3/chap15"))
+  .settings(
+    name := "chap15",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap16 = project
+  .in(file("part4/chap16"))
+  .settings(
+    name := "chap16",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap17 = project
+  .in(file("part4/chap17"))
+  .settings(
+    name := "chap17",
+    settings,
+    libraryDependencies ++= commonDependencies
+  )
+  .enablePlugins(JavaAppPackaging)
+
+lazy val chap18 = project
+  .in(file("part4/chap18"))
+  .settings(
+    name := "chap18",
     settings,
     libraryDependencies ++= commonDependencies
   )
