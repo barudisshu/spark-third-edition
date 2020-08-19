@@ -5,8 +5,6 @@ import org.apache.spark.sql.functions.{callUDF, col, lit, to_timestamp}
 import org.apache.spark.sql.types.{DataTypes, StructField, StructType}
 import org.apache.spark.sql.{RowFactory, SparkSession}
 
-import scala.collection.JavaConverters._
-
 object _01_OpenedLibrariesApp extends App with LazyLogging {
 
   val spark = SparkSession.builder().appName("Custom UDF to check if in range").master("local").getOrCreate()
